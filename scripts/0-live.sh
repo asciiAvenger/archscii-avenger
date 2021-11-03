@@ -11,6 +11,9 @@ echo "Preparing to install your operating system..."
 # enable ntp
 timedatectl set-ntp true
 
+# enable parallel pacman downloads
+sed -i 's/^#Parallel/Parallel/' /etc/pacman.conf
+
 # gettings users country iso
 echo "Please enter your country ISO (for example 'de')"
 read -p "ISO:" iso
