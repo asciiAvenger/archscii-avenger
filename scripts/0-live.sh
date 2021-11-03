@@ -20,7 +20,9 @@ read -p "ISO:" iso
 
 # set mirrors
 echo "Setting your mirrors..."
+echo "Installing reflector..."
 pacman -S --noconfirm reflector
+echo "Running reflector..."
 reflector --country $iso --latest 15 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
 
 # format disk
