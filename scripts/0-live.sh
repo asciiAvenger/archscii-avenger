@@ -30,7 +30,8 @@ echo "Please enter which one to format (for example /dev/sda)"
 read -p "Your Disk:" disk
 echo "This will format $disk. All previously contained data will be lost."
 read -p "Are you sure and want to continue? (y/N):" confirmation
-if [[ ! confirmation in (y|Y|yes|Yes|YES) ]]; then
+wordlist="y Y yes Yes YES"
+if ! echo $wordlist | grep -w $confirmation > /dev/null; then
     echo "Aborting the installation..."
     exit 1
 fi
