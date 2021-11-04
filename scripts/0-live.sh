@@ -2,9 +2,9 @@
 
 # this will prepare the installation while still in the live-environment
 
-echo "-------------------------------"
-echo "- Starting basic installation -"
-echo "-------------------------------"
+echo "###############################"
+echo "# Starting basic installation #"
+echo "###############################"
 
 echo "Preparing to install your operating system..."
 
@@ -60,6 +60,6 @@ echo "Installing basic packages..."
 pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware vim sudo git --noconfirm
 genfstab -U /mnt >> /mnt/etc/fstab
 
-echo "-------------------------------"
-echo "- Basic installation finished -"
-echo "-------------------------------"
+echo "###############################"
+echo "# Basic installation finished #"
+echo "###############################"
