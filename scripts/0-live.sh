@@ -27,7 +27,7 @@ reflector --country $iso --latest 15 --sort rate --protocol https --save /etc/pa
 
 # format disk
 echo "These are your disks:"
-fdisk -l
+lsblk
 echo "Please enter which one to format (for example /dev/sda)"
 read -p "Your Disk:" disk
 echo "This will format $disk. All previously contained data will be lost."
@@ -59,6 +59,10 @@ mount ${disk}1 /mnt/boot
 echo "Installing basic packages..."
 pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware vim sudo git --noconfirm
 genfstab -U /mnt >> /mnt/etc/fstab
+
+# copy over this repository to the new installation
+echo "Copying install files to the new installation..."
+cp -r ${dirname $0} /mnt/root/archscii-avenger
 
 echo "###############################"
 echo "# Basic installation finished #"

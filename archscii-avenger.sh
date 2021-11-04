@@ -12,3 +12,4 @@ cat << EOF
 EOF
 
 bash scripts/0-live.sh
+arch-chroot /mnt bash /root/archscii-avenger/scripts/1-install.sh
