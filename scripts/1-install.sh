@@ -65,7 +65,7 @@ systemctl enable sddm
 echo "Creating your first user..."
 echo "Please enter a username"
 read -p "Username: " username
-useradd -m -G wheel,docker,libvirt -s /bin/zsh $username
+useradd -m -G wheel -s /bin/zsh $username
 passwd $username
 
 echo "##############################"
