@@ -1,0 +1,8 @@
+mesa
+lib32-mesa
+xf86-video-amdgpu
+xorg
+plasma
+kde-applications
+sddm
+sddm-kcm
