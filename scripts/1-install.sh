@@ -35,3 +35,32 @@ systemctl enable NetworkManager.service
 # TODO: refactor
 pacman -S --noconfirm amd-ucode
 
+# setup permissions
+echo "Setting up some permissions..."
+echo "Please set your root password"
+passwd
+
+# enable sudo for the wheel group
+sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+
+# enable parallel pacman downloads again and enable multilib and run pacman Sy
+sed -i 's/^#Parallel/Parallel/' /etc/pacman.conf
+sed -i '/#\[multilib\]/,/#Include/''s/^#//' /etc/pacman.conf
+pacman -Sy --noconfirm
+
+# install bootloader
+echo "Installing bootloader..."
+pacman -S --noconfirm grub efibootmgr ntfs-3g os-prober
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCHSCII
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# install packages
+echo "Installing packages..."
+cat /root/archscii-avenger/packages.txt | pacman -S --noconfirm -
+
+# enable sddm
+systemctl enable sddm
+
+echo "##############################"
+echo "# Finished main installation #"
+echo "##############################"
