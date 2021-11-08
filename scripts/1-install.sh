@@ -61,6 +61,13 @@ cat /root/archscii-avenger/packages.txt | pacman -S --noconfirm -
 # enable sddm
 systemctl enable sddm
 
+# create first user
+echo "Creating your first user..."
+echo "Please enter a username"
+read -p "Username: " username
+useradd -m -G wheel,docker,libvirt -s /bin/zsh $username
+passwd $username
+
 echo "##############################"
 echo "# Finished main installation #"
 echo "##############################"

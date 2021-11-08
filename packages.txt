@@ -6,3 +6,9 @@ plasma
 kde-applications
 sddm
 sddm-kcm
+zsh
+vim
+docker
+neofetch
+code
+htop
