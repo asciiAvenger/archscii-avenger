@@ -63,7 +63,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 # copy over this repository to the new installation
 echo "Copying install files to the new installation..."
-cp -r $(dirname $0) /mnt/root/archscii-avenger
+cp -r $(dirname $0)/.. /mnt/root/archscii-avenger
 
 echo "###############################"
 echo "# Basic installation finished #"
