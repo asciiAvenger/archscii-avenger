@@ -12,3 +12,10 @@ docker
 neofetch
 code
 htop
+libvirt
+qemu
+virt-manager
+iptables-nft
+dnsmasq
+bridge-utils
+openbsd-netcat
