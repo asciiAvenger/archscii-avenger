@@ -9,5 +9,4 @@ sddm-kcm
 zsh
 vim
 neofetch
-code
 htop
