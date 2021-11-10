@@ -15,7 +15,7 @@ timedatectl set-ntp true
 sed -i 's/^#Parallel/Parallel/' /etc/pacman.conf
 
 # source settings.txt
-source $(dirname $0)/settings.txt
+source $(dirname $0)/../settings.txt
 
 # set mirrors
 echo "Setting your mirrors..."
