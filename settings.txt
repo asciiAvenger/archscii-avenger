@@ -1,0 +1,6 @@
+iso="de"
+disk="/dev/vda"
+timezone="Europe/Berlin"
+keymap="de-latin1"
+hostname="arch"
+username="dave"

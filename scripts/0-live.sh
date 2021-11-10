@@ -14,9 +14,8 @@ timedatectl set-ntp true
 # enable parallel pacman downloads
 sed -i 's/^#Parallel/Parallel/' /etc/pacman.conf
 
-# gettings users country iso
-echo "Please enter your country ISO (for example 'de')"
-read -p "ISO: " iso
+# source settings.txt
+source $(dirname $0)/settings.txt
 
 # set mirrors
 echo "Setting your mirrors..."
@@ -26,10 +25,7 @@ echo "Running reflector..."
 reflector --country $iso --latest 15 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
 
 # format disk
-echo "These are your disks:"
-lsblk
-echo "Please enter which one to format (for example /dev/sda)"
-read -p "Your Disk: " disk
+echo "Preparing disks..."
 echo "This will format $disk. All previously contained data will be lost."
 read -p "Are you sure and want to continue? (y/N):" confirmation
 wordlist="y Y yes Yes YES"
