@@ -29,8 +29,13 @@ pacman -S --noconfirm networkmanager
 systemctl enable NetworkManager.service
 
 # install microcode (amd for now)
-# TODO: refactor
-pacman -S --noconfirm amd-ucode
+echo "Installing microcode..."
+cpuVendor=$(lscpu | grep -i 'vendor id' | awk '{print $3}')
+if [$cpuVendor == "AuthenticAMD"]; then
+    pacman -S --noconfirm amd-ucode
+elif [$cpuVendor == "GenuineIntel"]; then
+    pacman -S --noconfirm intel-ucode
+fi
 
 # setup permissions
 echo "Setting up some permissions..."
