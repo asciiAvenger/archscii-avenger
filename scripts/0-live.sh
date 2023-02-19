@@ -17,12 +17,15 @@ sed -i 's/^#Parallel/Parallel/' /etc/pacman.conf
 # source settings.txt
 source $(dirname $0)/../settings.txt
 
+# loadkeys
+loadkeys $keymap
+
 # set mirrors
 echo "Setting your mirrors..."
 echo "Installing reflector..."
 pacman -S --noconfirm reflector
 echo "Running reflector..."
-reflector --country $iso --latest 15 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
+reflector --country $iso --latest 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
 
 # format disk
 echo "Preparing disks..."
@@ -54,7 +57,7 @@ mount ${disk}1 /mnt/boot
 
 # pacstrap
 echo "Installing basic packages..."
-pacstrap /mnt base base-devel linux-zen linux-zen-headers linux-firmware vim sudo git --noconfirm
+pacstrap /mnt base base-devel linux linux-headers linux-firmware sudo --noconfirm
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # copy over this repository to the new installation

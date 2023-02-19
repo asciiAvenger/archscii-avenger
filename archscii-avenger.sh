@@ -13,3 +13,4 @@ EOF
 
 bash scripts/0-live.sh
 arch-chroot /mnt bash /root/archscii-avenger/scripts/1-install.sh
+bash scripts/3-finish.sh

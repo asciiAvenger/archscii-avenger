@@ -22,13 +22,11 @@ locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=$keymap" > /etc/vconsole.conf
 
-# configure networking
-echo "Setting up networking..."
+# configure hostname
+echo "Setting up hostname..."
 echo $hostname > /etc/hostname
-pacman -S --noconfirm networkmanager
-systemctl enable NetworkManager.service
 
-# install microcode (amd for now)
+# install microcode
 echo "Installing microcode..."
 cpuVendor=$(lscpu | grep -i 'vendor id' | awk '{print $3}')
 if [$cpuVendor == "AuthenticAMD"]; then
@@ -43,12 +41,12 @@ echo "Please set your root password"
 passwd
 
 # enable passwordless sudo for the wheel group
-sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 # enable parallel pacman downloads again and enable multilib and run pacman Sy
-sed -i 's/^#Parallel/Parallel/' /etc/pacman.conf
-sed -i '/#\[multilib\]/,/#Include/''s/^#//' /etc/pacman.conf
-pacman -Sy --noconfirm
+# sed -i 's/^#Parallel/Parallel/' /etc/pacman.conf
+# sed -i '/#\[multilib\]/,/#Include/''s/^#//' /etc/pacman.conf
+# pacman -Sy --noconfirm
 
 # install bootloader
 echo "Installing bootloader..."
@@ -56,12 +54,18 @@ pacman -S --noconfirm grub efibootmgr ntfs-3g os-prober
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCHSCII
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# install yay
+echo "Installing yay..."
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+cd /tmp/yay && makepkg -si
+rm -rf /tmp/yay
+
 # install packages
 echo "Installing packages..."
-cat /root/archscii-avenger/packages.txt | pacman -S --noconfirm -
+cat /root/archscii-avenger/packages.txt | yay -S --noconfirm -
 
-# enable sddm
-systemctl enable sddm
+# enable gdm
+systemctl enable gdm.service
 
 # create first user
 echo "Creating your first user $username..."
