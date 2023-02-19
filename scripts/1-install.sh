@@ -56,7 +56,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # create first user
 echo "Creating your first user $username..."
-useradd -m -G wheel -s /bin/zsh $username
+useradd -m -G wheel $username
 echo "Please set your users password"
 passwd $username
 
