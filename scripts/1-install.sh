@@ -41,7 +41,7 @@ echo "Please set your root password"
 passwd
 
 # enable passwordless sudo for the wheel group
-sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
 # enable parallel pacman downloads again and enable multilib and run pacman Sy
 # sed -i 's/^#Parallel/Parallel/' /etc/pacman.conf
@@ -54,6 +54,15 @@ pacman -S --noconfirm grub efibootmgr ntfs-3g os-prober
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCHSCII
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# create first user
+echo "Creating your first user $username..."
+useradd -m -G wheel -s /bin/zsh $username
+echo "Please set your users password"
+passwd $username
+
+# switch to newly created user
+su $username
+
 # install yay
 echo "Installing yay..."
 git clone https://aur.archlinux.org/yay.git /tmp/yay
@@ -65,13 +74,7 @@ echo "Installing packages..."
 cat /root/archscii-avenger/packages.txt | yay -S --noconfirm -
 
 # enable gdm
-systemctl enable gdm.service
-
-# create first user
-echo "Creating your first user $username..."
-useradd -m -G wheel -s /bin/zsh $username
-echo "Please set your users password"
-passwd $username
+sudo systemctl enable gdm.service
 
 echo "##############################"
 echo "# Finished main installation #"
