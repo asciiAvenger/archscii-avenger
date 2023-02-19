@@ -11,6 +11,9 @@ cat << 'EOF'
 #################################################################################
 EOF
 
+source $(dirname $0)/settings.txt
+
 bash scripts/0-live.sh
-arch-chroot /mnt bash /root/archscii-avenger/scripts/1-install.sh
+arch-chroot /mnt sh /root/archscii-avenger/scripts/1-install.sh
+arch-chroot /mnt su $username -c "sh ~/archscii-avenger/scripts/2-user.sh"
 bash scripts/3-finish.sh

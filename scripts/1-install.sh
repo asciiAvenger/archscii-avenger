@@ -41,12 +41,7 @@ echo "Please set your root password"
 passwd
 
 # enable passwordless sudo for the wheel group
-sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
-
-# enable parallel pacman downloads again and enable multilib and run pacman Sy
-# sed -i 's/^#Parallel/Parallel/' /etc/pacman.conf
-# sed -i '/#\[multilib\]/,/#Include/''s/^#//' /etc/pacman.conf
-# pacman -Sy --noconfirm
+sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
 # install bootloader
 echo "Installing bootloader..."
@@ -60,21 +55,14 @@ useradd -m -G wheel $username
 echo "Please set your users password"
 passwd $username
 
-# switch to newly created user for the next operations
-su $username -c '
+# copy install files to newly created user
+echo "Copying install files to the new user..."
+cp -r /root/archscii-avenger /home/$username/
+chown -R $username:$username /home/$username/archscii-avenger
 
-# install yay
-echo "Installing yay..."
-git clone https://aur.archlinux.org/yay.git /tmp/yay
-cd /tmp/yay && makepkg -si
-rm -rf /tmp/yay
-
-# install packages
-echo "Installing packages..."
-cat /root/archscii-avenger/packages.txt | yay -S --noconfirm -'
-
-# enable gdm
-sudo systemctl enable gdm.service
+# delete install files from /root
+echo "Deleting install files from /root..."
+rm -rf /root/archscii-avenger
 
 echo "##############################"
 echo "# Finished main installation #"
