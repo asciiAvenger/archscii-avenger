@@ -41,7 +41,7 @@ echo "Please set your root password"
 passwd
 
 # enable passwordless sudo for the wheel group
-sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+sed -i 's/^# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
 
 # install bootloader
 echo "Installing bootloader..."
