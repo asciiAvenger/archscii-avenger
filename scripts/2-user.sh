@@ -38,6 +38,7 @@ gsettings set org.gnome.desktop.desktop picture-options "zoom"
 gsettings set org.gnome.desktop.desktop picture-uri "file:///..." # select nice default - maybe from gnome or arch wallpapers
 gsettings set org.gnome.desktop.desktop picture-uri-dark "file:///..."
 # org.gnome.desktop.interface
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 gsettings set org.gnome.desktop.interface cursor-size 24
 gsettings set org.gnome.desktop.interface cursor-theme "Qogir"
 gsettings set org.gnome.desktop.interface document-font-name "Cantarell 12"
