@@ -32,6 +32,28 @@ rm -rf /tmp/dotfiles
 # change shell to zsh
 chsh -s /bin/zsh
 
+# set dconf settings
+# org.gnome.desktop.desktop
+gsettings set org.gnome.desktop.desktop picture-options "zoom"
+gsettings set org.gnome.desktop.desktop picture-uri "file:///..." # select nice default - maybe from gnome or arch wallpapers
+gsettings set org.gnome.desktop.desktop picture-uri-dark "file:///..."
+# org.gnome.desktop.interface
+gsettings set org.gnome.desktop.interface cursor-size 24
+gsettings set org.gnome.desktop.interface cursor-theme "Qogir"
+gsettings set org.gnome.desktop.interface document-font-name "Cantarell 12"
+gsettings set org.gnome.desktop.interface enable-hot-corners false
+gsettings set org.gnome.desktop.interface font-name "Cantarell 12"
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+gsettings set org.gnome.desktop.interface icon-theme "Qogir-dark"
+gsettings set org.gnome.desktop.interface monospace-font-name "FiraCode Nerd Font Mono 12"
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.3
+# org.gnome.desktop.screensaver
+gsettings set org.gnome.desktop.screensaver picture-options "zoom"
+gsettings set org.gnome.desktop.screensaver picture-uri "file:///..." # select nice default - maybe from gnome or arch wallpapers 
+# org.gnome.desktop.wm.preferences
+gsettings set org.gnome.desktop.wm.preferences button-layout "appmenu:minimize,maximize,close"
+gsettings set org.gnome.desktop.wm.preferences titlebar-font "Cantarell 12"
+
 # delete install files
 echo "Deleting install files from user directory..."
 rm -rf ~/archscii-avenger
