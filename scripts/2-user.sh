@@ -12,7 +12,8 @@ rm -rf /tmp/yay
 
 # install packages
 echo "Installing packages..."
-cat ~/archscii-avenger/packages.txt | yay -S --noconfirm -
+packages=$(cat ~/archscii-avenger/packages.txt)
+yay -S --noconfirm $packages
 
 # enable gdm
 sudo systemctl enable gdm.service
