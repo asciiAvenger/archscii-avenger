@@ -26,6 +26,11 @@ echo "KEYMAP=$keymap" > /etc/vconsole.conf
 echo "Setting up hostname..."
 echo $hostname > /etc/hostname
 
+# enable parallel pacman downloads again and enable multilib and run pacman Sy
+sed -i 's/^#Parallel/Parallel/' /etc/pacman.conf
+sed -i '/#\[multilib\]/,/#Include/''s/^#//' /etc/pacman.conf
+pacman -Sy --noconfirm
+
 # install microcode
 echo "Installing microcode..."
 cpuVendor=$(lscpu | grep -i 'vendor id' | awk '{print $3}')

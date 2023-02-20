@@ -18,6 +18,10 @@ yay -S --noconfirm $packages
 # enable gdm
 sudo systemctl enable gdm.service
 
+# delete install files
+echo "Deleting install files from user directory..."
+rm -rf ~/archscii-avenger
+
 echo "#######################"
 echo "# Finished user setup #"
 echo "#######################"

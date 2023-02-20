@@ -25,7 +25,7 @@ echo "Setting your mirrors..."
 echo "Installing reflector..."
 pacman -S --noconfirm reflector
 echo "Running reflector..."
-reflector --country $iso --latest 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
+reflector --country $iso --latest 10 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
 
 # format disk
 echo "Preparing disks..."
