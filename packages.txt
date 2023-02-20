@@ -29,6 +29,7 @@ gvfs-nfs
 gvfs-smb
 htop
 nautilus
+networkmanager
 reflector
 starship
 sushi

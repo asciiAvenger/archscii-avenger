@@ -65,10 +65,6 @@ echo "Copying install files to the new user..."
 cp -r /root/archscii-avenger /home/$username/
 chown -R $username:$username /home/$username/archscii-avenger
 
-# delete install files from /root
-echo "Deleting install files from /root..."
-rm -rf /root/archscii-avenger
-
 echo "##############################"
 echo "# Finished main installation #"
 echo "##############################"
