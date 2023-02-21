@@ -57,7 +57,7 @@ mount ${disk}1 /mnt/boot
 
 # pacstrap
 echo "Installing basic packages..."
-pacstrap /mnt base base-devel linux linux-headers linux-firmware sudo git --noconfirm
+pacstrap /mnt base base-devel linux linux-headers linux-firmware sudo git zsh --noconfirm
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # copy over this repository to the new installation

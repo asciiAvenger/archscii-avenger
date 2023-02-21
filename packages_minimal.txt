@@ -35,4 +35,3 @@ starship
 sushi
 vim
 xdg-user-dirs-gtk
-zsh

@@ -51,6 +51,7 @@ lite-xl
 mpv
 nautilus
 nautilus-dropbox
+networkmanager
 nordvpn-bin
 notepadqq
 okular
@@ -78,4 +79,3 @@ virtualbox-guest-iso
 vscodium-bin
 xdg-user-dirs-gtk
 yelp
-zsh

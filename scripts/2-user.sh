@@ -29,9 +29,6 @@ cp /tmp/dotfiles/.zshrc ~
 cp /tmp/dotfiles/.config/* ~/.config
 rm -rf /tmp/dotfiles
 
-# change shell to zsh
-chsh -s /bin/zsh
-
 # set dconf settings
 # org.gnome.desktop.desktop
 gsettings set org.gnome.desktop.desktop picture-options "zoom"
