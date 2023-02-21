@@ -8,6 +8,7 @@ echo "##############"
 echo "Installing yay..."
 git clone https://aur.archlinux.org/yay.git /tmp/yay
 cd /tmp/yay && makepkg -si --noconfirm
+cd # go back to ~ before deleting
 rm -rf /tmp/yay
 
 # install packages
