@@ -35,8 +35,8 @@ chsh -s /bin/zsh
 # set dconf settings
 # org.gnome.desktop.desktop
 gsettings set org.gnome.desktop.desktop picture-options "zoom"
-gsettings set org.gnome.desktop.desktop picture-uri "file:///..." # select nice default - maybe from gnome or arch wallpapers
-gsettings set org.gnome.desktop.desktop picture-uri-dark "file:///..."
+gsettings set org.gnome.desktop.desktop picture-uri "file:///usr/share/backgrounds/gnome/grid-d.webp"
+gsettings set org.gnome.desktop.desktop picture-uri-dark "file:///usr/share/backgrounds/gnome/grid-d.webp"
 # org.gnome.desktop.interface
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 gsettings set org.gnome.desktop.interface cursor-size 24
@@ -50,7 +50,7 @@ gsettings set org.gnome.desktop.interface monospace-font-name "FiraCode Nerd Fon
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.3
 # org.gnome.desktop.screensaver
 gsettings set org.gnome.desktop.screensaver picture-options "zoom"
-gsettings set org.gnome.desktop.screensaver picture-uri "file:///..." # select nice default - maybe from gnome or arch wallpapers 
+gsettings set org.gnome.desktop.screensaver picture-uri "file:///usr/share/backgrounds/gnome/grid-d.webp" 
 # org.gnome.desktop.wm.preferences
 gsettings set org.gnome.desktop.wm.preferences button-layout "appmenu:minimize,maximize,close"
 gsettings set org.gnome.desktop.wm.preferences titlebar-font "Cantarell 12"
